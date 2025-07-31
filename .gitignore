@@ -1,1 +1,14 @@
 docs/build/
+__pycache__/
+.vscode
+*.log
+*.idx
+*.npy
+*.txt
+*.DS_Store
+*.out
+build
+dist
+logs/*
+*.so
+*.pyc
