@@ -155,11 +155,11 @@ def setup(app):
     """Setup function called by Sphinx."""
     
     # Register configuration values that can be set via -D flags
-    app.add_config_value('typesense_host', 'localhost', 'html')
-    app.add_config_value('typesense_port', 8108, 'html')
-    app.add_config_value('typesense_protocol', 'http', 'html')
-    app.add_config_value('typesense_api_key', '', 'html')
-    app.add_config_value('typesense_collection', 'sphinx_docs', 'html')
+    app.add_config_value('typesense_host', 'typesense.product-team-dev.infini-ai.com', 'html')
+    app.add_config_value('typesense_port', 9443, 'html')
+    app.add_config_value('typesense_protocol', 'https', 'html')
+    app.add_config_value('typesense_api_key', 'hAvqOEYEbtQwuFvm0SeclKHmCX4QXgs3', 'html')
+    app.add_config_value('typesense_collection', 'infini-RL', 'html')
     app.add_config_value('sphinx_env', 'development', 'html')
     app.add_config_value('sphinx_debug', 'false', 'html')
     
