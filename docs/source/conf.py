@@ -17,9 +17,11 @@ extensions = [
 
     "sphinx.ext.autodoc",             
     "sphinx.ext.autosummary",          
-    "sphinx.ext.napoleon",            
+    "sphinx.ext.napoleon",      
+    "sphinx_sitemap"      
     # "sphinx.ext.viewcode",            
 ]
+html_baseurl = "https://rlinf-docs.readthedocs.io/en/latest/"
 
 autosummary_generate = True
 autodoc_default_options = {
