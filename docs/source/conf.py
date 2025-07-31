@@ -22,12 +22,14 @@ extensions = [
     # "sphinx.ext.viewcode",            
 ]
 
-on_rtd = os.environ.get("READTHEDOCS") == "True"
+# on_rtd = os.environ.get("READTHEDOCS") == "True"
 
-if on_rtd:
-    html_baseurl = "https://rlinf-docs.readthedocs.io/en/latest/"
-else:
-    html_baseurl = "http://localhost:8000/"
+# if on_rtd:
+#     html_baseurl = "https://rlinf-docs.readthedocs.io/en/latest/"
+# else:
+#     html_baseurl = "http://localhost:8000/"
+
+html_baseurl = "https://rlinf-docs.readthedocs.io/en/latest/"
 
 autosummary_generate = True
 autodoc_default_options = {
@@ -53,11 +55,7 @@ html_show_sourcelink = False
 # -- Options for HTML output -------------------------------------------------
 html_theme = "pydata_sphinx_theme"
 
-# Function to read SVG content for the logo
-# import pathlib
-# def render_svg_logo(path):
-#     with open(pathlib.Path(__file__).parent / path, "r", encoding="utf-8") as f:
-#         return f.read()
+
 import pathlib, re
 def render_svg_logo(path, width="4rem", height="auto"):
     svg_path = pathlib.Path(__file__).parent / path
@@ -120,7 +118,6 @@ html_css_files = [
     "css/custom.css",
     'css/sphinx-modal.css',
     'css/mode-selection.css',
-    # 'https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0'
 ]
 
 
