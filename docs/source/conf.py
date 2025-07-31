@@ -21,7 +21,13 @@ extensions = [
     "sphinx_sitemap"      
     # "sphinx.ext.viewcode",            
 ]
-html_baseurl = "https://rlinf-docs.readthedocs.io/en/latest/"
+
+on_rtd = os.environ.get("READTHEDOCS") == "True"
+
+if on_rtd:
+    html_baseurl = "https://rlinf-docs.readthedocs.io/en/latest/"
+else:
+    html_baseurl = "http://localhost:8000/"
 
 autosummary_generate = True
 autodoc_default_options = {
