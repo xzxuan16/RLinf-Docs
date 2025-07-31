@@ -120,6 +120,7 @@ html_css_files = [
     "css/custom.css",
     'css/sphinx-modal.css',
     'css/mode-selection.css',
+    # 'https://cdn.jsdelivr.net/npm/typesense-docsearch-css@0.3.0'
 ]
 
 

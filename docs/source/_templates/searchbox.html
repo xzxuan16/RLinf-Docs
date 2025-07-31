@@ -1,0 +1,18 @@
+ <!-- {%- if 'singlehtml' not in builder %}
+   <div id="searchbar"></div>
+   <script src="https://cdn.jsdelivr.net/npm/typesense-docsearch.js@3.4"></script>
+   <script>
+     docsearch({
+       container: '#searchbar',
+       typesenseCollectionName: "infini-RL",
+       typesenseServerConfig: { 
+         nodes: [{
+           host: 'localhost',
+           port: '8108',
+           protocol: 'http'
+         }],
+         apiKey: 'xyz',
+       }
+     });
+   </script>
+   {%- endif %} -->

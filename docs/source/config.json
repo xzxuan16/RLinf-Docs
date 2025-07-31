@@ -1,0 +1,57 @@
+{
+  "index_name": "infini-RL",
+  "start_urls": [
+    {
+      "url": "https://rlinf-docs.readthedocs.io/en/latest/"
+    }
+  ],
+  "sitemap_urls": ["https://rlinf-docs.readthedocs.io/en/latest/sitemap.xml"],
+  "selectors": {
+    "default": {
+        "lvl0": ".bd-main .bd-content .bd-article-container h1",
+        "lvl1": ".bd-main .bd-content .bd-article-container h2",
+        "lvl2": ".bd-main .bd-content .bd-article-container h3",
+        "lvl3": ".bd-main .bd-content .bd-article-container h4",
+        "lvl4": ".bd-main .bd-content .bd-article-container h5",
+        "text": ".bd-main .bd-content .bd-article-container p, .bd-main .bd-content .bd-article-container ul li, .bd-main .bd-content .bd-article-container ol li, .bd-main .bd-content .bd-article-container table tr, .bd-main .bd-content .bd-article-container blockquote, .bd-main .bd-content .bd-article-container pre code"
+    }
+  },
+  "scrape_start_urls": false,
+  "strip_chars": " .,;:#",
+  "custom_settings": {
+    "field_definitions": [
+      { "name": "anchor", "type": "string", "locale":"zh", "optional": true },
+      { "name": "content", "type": "string", "locale":"zh", "optional": true },
+      { "name": "url", "type": "string", "locale":"zh", "facet": false },
+      { "name": "url_without_anchor", "type": "string", "locale":"zh", "facet": false, "optional": true },
+      { "name": "version", "type": "string[]", "facet": true, "optional": true },
+      { "name": "hierarchy.lvl0", "type": "string", "locale":"zh", "facet": false, "optional": true },
+      { "name": "hierarchy.lvl1", "type": "string", "locale":"zh", "facet": false, "optional": true },
+      { "name": "hierarchy.lvl2", "type": "string", "locale":"zh", "facet": false, "optional": true },
+      { "name": "hierarchy.lvl3", "type": "string", "locale":"zh", "facet": false, "optional": true },
+      { "name": "type", "type": "string", "locale":"zh", "facet": true, "optional": true },
+      { "name": ".*_tag", "type": "string", "locale":"zh", "facet": true, "optional": true },
+      { "name": "language", "type": "string", "locale":"zh", "facet": true, "optional": true },
+      { "name": "tags", "type": "string[]", "facet": true, "optional": true },
+      { "name": "item_priority", "type": "int64" },
+      {
+        "name": "embedding",
+        "type": "float[]",
+        "embed": {
+          "from": [
+            "content",
+            "hierarchy.lvl0",
+            "hierarchy.lvl1",
+            "hierarchy.lvl2",
+            "hierarchy.lvl3"
+          ],
+          "model_config": {
+            "model_name": "openai/jina-embeddings-v2-base-zh",
+            "api_key": "sk-dax3oxpjg7zovz7z",
+            "url": "https://cloud.infini-ai.com/maas/"
+          }
+        }
+      }
+    ]
+  }
+}
