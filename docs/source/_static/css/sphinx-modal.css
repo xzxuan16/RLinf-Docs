@@ -27,8 +27,8 @@
   --leading-relaxed: 1.6;
   
   /* HSL Color System - Better for manipulation */
-  --sphinx-primary-hue: 210;
-  --sphinx-primary-sat: 100%;
+  --sphinx-primary-hue: 267;
+  --sphinx-primary-sat: 92%;
   
   /* Primary Color Shades */
   --sphinx-primary-50: hsl(var(--sphinx-primary-hue), var(--sphinx-primary-sat), 97%);
@@ -374,8 +374,8 @@
 .sphinx-input-container textarea:focus {
   outline: none;
   outline-offset: -2px;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+  border-color: #CF9BFF;
+  box-shadow: 0 0 0 3px rgba(170, 0, 255, 0.1);
 }
 
 .sphinx-input-container textarea::placeholder {

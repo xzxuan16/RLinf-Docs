@@ -23,27 +23,27 @@ function getSphinxAIConfig() {
         defaultMode: 'quick',
         modes: {
           quick: {
-            label: '快答',
-            description: '日常答疑解惑',
-            time: '2-3 秒',
+            label: 'Quick Answer',
+            description: 'Everyday Q&A',
+            time: '2-3s',
             model: 'qwen3-8b',
             timeout: 30000,
             icon: 'lightning',
             iconPath: 'M11.0015 1.00015V8.00015H17.0015L9.00146 19.0002V12.0002H3.00146L11.0015 1.00015Z'
           },
           balance: {
-            label: '平衡',
-            description: '兼顾速度和深度',
-            time: '~30 秒',
+            label: 'Balanced',
+            description: 'Balance speed and depth',
+            time: '~30s',
             model: 'qwen3-32b',
             timeout: 60000,
             icon: 'balance',
             iconPath: 'M10 2v16M10 6l-6 2v2l6-2 6 2V8l-6-2z'
           },
           deep: {
-            label: '深思',
-            description: '适合复杂问题分析',
-            time: '~120 秒',
+            label: 'Deep Research',
+            description: 'For complex problem analysis',
+            time: '~120s',
             model: 'qwen3-235b-a22b',
             timeout: 120000,
             icon: 'brain',
@@ -55,7 +55,7 @@ function getSphinxAIConfig() {
       // UI configuration
       ui: {
         theme: 'auto', // 'auto', 'light', 'dark'
-        language: 'zh', // 'zh', 'en'
+        language: 'en', // 'zh', 'en'
         enableAnimations: true,
         enableKeyboardShortcuts: true
       },

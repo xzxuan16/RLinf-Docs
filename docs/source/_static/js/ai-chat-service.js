@@ -294,17 +294,17 @@ class SphinxAIChatService {
   async generateMockResponse(message, mode = 'quick') {
     const modeResponses = {
       quick: [
-        '这是一个快速模拟回答。在真实环境中，这里会显示来自 Typesense AI 服务的智能回复。',
-        '快速模式：为了演示目的，这是一个模拟的AI回复。实际部署时会连接到 Typesense 服务器。',
-        '模拟回答：您的问题已收到。在配置了 Typesense 后，您将获得基于文档内容的智能回复。'
+        'This is a quick simulated response. In a real environment, this will display intelligent replies from the Typesense AI service.',
+        'Quick Mode: For demonstration purposes, this is a simulated AI reply. In actual deployment, it will connect to the Typesense server.',
+        'Simulated response: Your question has been received. Once Typesense is configured, you will receive intelligent, document-based answers.'
       ],
       balance: [
-        '平衡模式模拟回答：这是一个更详细的模拟回复，用于展示平衡模式的响应特点。在实际使用中，Typesense AI 会根据您的文档内容提供准确的答案。',
-        '这是平衡模式的模拟响应。真实环境下，系统会通过 Typesense 搜索相关文档并生成综合性回答。'
+        'Balanced Mode simulated response: This is a more detailed simulated reply, showing the characteristics of the Balanced Mode. In real use, Typesense AI will provide accurate answers based on your document content.',
+        'This is a simulated response for Balanced Mode. In a real environment, the system will search related documents via Typesense and generate a comprehensive reply.'
       ],
       deep: [
-        '深度思考模式模拟回答：这是一个详细的、经过深入分析的模拟回复。在实际部署中，深度模式会利用 Typesense 的高级 AI 功能，对复杂问题进行全面分析，提供深入见解和详细解答。系统会综合多个文档源，进行逻辑推理，并给出结构化的回答。',
-        '深度模式演示：这里展示的是一个复杂问题的模拟分析过程。实际使用时，Typesense AI 会进行多层次的文档分析和推理。'
+        'Deep Research Mode simulated response: This is a detailed, thoroughly analyzed simulated reply. In actual deployment, Deep Research Mode will leverage Typesense’s advanced AI features to fully analyze complex questions, providing deep insights and detailed answers. The system synthesizes multiple document sources, applies logical reasoning, and delivers a structured response.',
+        'Deep Research Mode demo: This showcases a simulated analysis process for a complex question. In real use, Typesense AI will perform multi-layered document analysis and reasoning.'
       ]
     };
     

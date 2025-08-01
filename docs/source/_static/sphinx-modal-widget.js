@@ -39,7 +39,6 @@
     }
   }
 
-  // 检测当前页面信息
   function getPageContext() {
     const title = document.title;
     const url = window.location.href;
@@ -64,7 +63,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.5) ;
         z-index: 1001;
         opacity: 0;
         visibility: hidden;
@@ -105,13 +104,13 @@
       }
       
       .sphinx-modal-header {
-        background: #f8f9fa;
-        color: #2d3748;
+        background: rgba(171, 71, 188, 0.1);
+        color: #673ab7;
         padding: 24px 30px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid #e2e8f0;
+        border-bottom: 1px solid rgba(171, 71, 188, 0.2);
       }
       
       .sphinx-modal-header-content {
@@ -129,20 +128,20 @@
       }
       
       .sphinx-modal-logo path {
-        fill: #007bff;
+        fill: #673ab7;
       }
       
       .sphinx-modal-title {
         margin: 0;
         font-size: 20px;
         font-weight: 600;
-        color: #2d3748;
+        color: #000000ff;
       }
       
       .sphinx-modal-close {
         background: transparent;
         border: none;
-        color: #6c757d;
+        color: #673ab7;
         width: 36px;
         height: 36px;
         border-radius: 50%;
@@ -155,8 +154,8 @@
       }
       
       .sphinx-modal-close:hover {
-        background: #f8f9fa;
-        color: #2d3748;
+        background: rgba(171, 71, 188, 0.1);
+        color: #673ab7;
         transform: rotate(90deg);
       }
       
@@ -172,11 +171,11 @@
 
       .sphinx-modal-footer {
         padding: 8px 30px;
-        background: #f8f9fa;
-        border-top: 1px solid #e2e8f0;
+        background: rgba(171, 71, 188, 0.05);
+        border-top: 1px solid #f0e2ebff;
         text-align: center;
         font-size: 13px;
-        color: #6c757d;
+        color: #673ab7;
         line-height: 1.4;
         position: relative;
       }
@@ -206,14 +205,14 @@
         min-height: 44px;
         max-height: 120px;
         padding: 12px 16px;
-        border: 2px solid #e2e8f0;
+        border: 2px solid #673ab7;
         border-radius: 8px;
         resize: none;
         font-family: inherit;
         font-size: 14px;
         line-height: 1.5;
         background: white;
-        color: #2d3748;
+        color: #4c1a52ff;
         transition: all 0.2s ease;
         overflow-y: auto;
       }
@@ -221,13 +220,13 @@
       .sphinx-input-container textarea:focus {
         outline: none;
         outline-offset: -2px;
-        border-color: #007bff;
-        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        border-color: #673ab7;
+        box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.1);
       }
       
       .sphinx-submit-btn {
         padding: 12px 20px;
-        background: #007bff;
+        background: #673ab7;
         color: white;
         border: none;
         border-radius: 8px;
@@ -241,9 +240,9 @@
       }
       
       .sphinx-submit-btn:hover:not(:disabled) {
-        background: #0056b3;
+        background: #512da8;
         transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+        box-shadow: 0 4px 12px rgba(103, 58, 183, 0.2);
       }
     `;
     document.head.appendChild(style);
@@ -251,6 +250,8 @@
 
   // Enhanced modal creation with AI chat focus
   function createModal() {
+    const base   = window.location.origin + window.location.pathname;
+    const logoUrl = new URL("_static/logo.svg", base).href;
     const modal = document.createElement('div');
     
     modal.innerHTML = `
@@ -258,10 +259,10 @@
         <div class="sphinx-modal">
           <div class="sphinx-modal-header">
             <div class="sphinx-modal-header-content">
-              <svg class="sphinx-modal-logo" viewBox="0 0 24 20" fill="none">
-                <path d="M12 2L15.09 8.26L22 9L17 12.74L18 19L12 16L6 19L7 12.74L2 9L8.91 8.26L12 2Z"/>
-              </svg>
-              <h3 class="sphinx-modal-title">AI 文档助手</h3>
+              <a href="${window.location.pathname.replace(/[^/]+$/, '')}" class="navbar-brand">
+                <img src="${logoUrl}" class="sphinx-modal-logo" alt="logo">
+              </a>
+              <h3 class="sphinx-modal-title">Your AI Assistant</h3>
             </div>
             <button class="sphinx-modal-close">×</button>
           </div>
@@ -277,18 +278,18 @@
                     </div>
                   </div>
                   <textarea 
-                    placeholder="问我任何关于文档的问题..."
+                    placeholder="Ask me any question about the RLinf..."
                     rows="1"
                   ></textarea>
-                  <button class="sphinx-submit-btn">发送</button>
+                  <button class="sphinx-submit-btn">Ask AI</button>
                 </div>
               </div>
             </div>
           </div>
           
-          <div class="sphinx-modal-footer">
-            💡 Powered by Infini AI Assistant | 文档智能助手
-          </div>
+        <div class="sphinx-modal-footer">
+          💡 Powered by Infini AI Assistant | ⚠️ Content generated by AI — please verify carefully.
+        </div>
         </div>
       </div>
     `;
@@ -297,16 +298,16 @@
     return modal;
   }
 
-  // 创建触发按钮
+  // creater trigger button
   function createTrigger() {
     const trigger = document.createElement('button');
     trigger.className = 'sphinx-modal-trigger';
-    trigger.innerHTML = '🤖 Ask AI';
+    trigger.innerHTML = 'Ask AI';
     trigger.style.cssText = `
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: var(--sphinx-primary, #007bff);
+      bottom: 100px;
+      right: 100px;
+      background-color: #673ab7;
       color: white;
       border: none;
       border-radius: 50px;
@@ -315,7 +316,7 @@
       font-family: var(--sphinx-font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
       font-size: 14px;
       font-weight: 500;
-      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(31, 13, 45, 0.7);
       z-index: 1000;
       transition: all 0.2s ease;
       display: flex;
@@ -326,12 +327,12 @@
     // Hover effects
     trigger.addEventListener('mouseenter', () => {
       trigger.style.transform = 'translateY(-2px)';
-      trigger.style.boxShadow = '0 6px 20px rgba(0, 123, 255, 0.4)';
+      trigger.style.boxShadow = '0 6px 20px rgba(50, 0, 65, 0.4)';
     });
     
     trigger.addEventListener('mouseleave', () => {
       trigger.style.transform = 'translateY(0)';
-      trigger.style.boxShadow = '0 4px 15px rgba(0, 123, 255, 0.3)';
+      trigger.style.boxShadow = '0 4px 15px rgba(77, 0, 61, 0.3)';
     });
     
     document.body.appendChild(trigger);
@@ -439,15 +440,16 @@
   
   function showEmptyState(container) {
     container.innerHTML = `
-      <div class="sphinx-chat-empty">
-        <h3>👋 你好！我是 AI 文档助手</h3>
-        <p>我可以帮助您理解当前文档内容，回答您的问题。</p>
-        <div class="sphinx-suggested-prompts">
-          <div class="sphinx-suggested-prompt" data-prompt="这个文档讲的是什么？">这个文档讲的是什么？</div>
-          <div class="sphinx-suggested-prompt" data-prompt="如何快速开始使用？">如何快速开始使用？</div>
-          <div class="sphinx-suggested-prompt" data-prompt="有什么注意事项？">有什么注意事项？</div>
-        </div>
+    <div class="sphinx-chat-empty">
+      <h3>👋 Hello! I'm your AI Documentation Assistant</h3>
+      <p>I can help you understand the content of this document and answer your questions.</p>
+      <div class="sphinx-suggested-prompts">
+        <div class="sphinx-suggested-prompt" data-prompt="What is RLInf about?">What is RLInf about?</div>
+        <div class="sphinx-suggested-prompt" data-prompt="How do I get started quickly?">How do I get started quickly?</div>
+        <div class="sphinx-suggested-prompt" data-prompt="Where can I find examples?">Where can I find examples?</div>
+        <div class="sphinx-suggested-prompt" data-prompt="Are there any important notes?">Are there any important notes?</div>
       </div>
+    </div>
     `;
     
     // Add click handlers for suggested prompts
@@ -522,7 +524,7 @@
       );
       
     } catch (error) {
-      const errorMessage = '抱歉，发生了错误，请重试。';
+      const errorMessage = 'Sorry, an error occurred. Please try again.';
       updateAIMessage(aiMessage.id, errorMessage, container, false);
       messageManager.updateMessage(aiMessage.id, { 
         isLoading: false,
@@ -546,7 +548,7 @@
     let content;
     
     if (message.isLoading) {
-      content = '正在思考...';
+      content = 'thinking...';
     } else if (message.sender === 'ai') {
       // Render markdown for AI messages
       content = renderMarkdown(message.content);
@@ -627,7 +629,7 @@
     
     return `
       <div class="sphinx-sources">
-        <h4>参考资料</h4>
+        <h4>reference</h4>
         ${sourcesHTML}
       </div>
     `;
@@ -802,6 +804,5 @@
     console.log('Enhanced Sphinx AI Modal Widget loaded');
   }
 
-  // 启动组件
   init();
 })();

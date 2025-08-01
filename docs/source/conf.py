@@ -1,110 +1,65 @@
-# Configuration file for the Sphinx documentation builder.
 import os
 import sys
+import pathlib
+import re
 
+# Ensure project root is on Python path for autodoc
 sys.path.insert(0, os.path.abspath("../../"))
 
-# -- Project information -----------------------------------------------------
-project = 'RLInf'
+
+# -- Project Information -------------------------------------------------------
+
+project   = 'RLInf'
+author    = 'xzxuan'
 copyright = '2025, xzxuan'
-author = 'xzxuan'
-release = 'v1'
+release   = 'v1'
 
-# -- General configuration ---------------------------------------------------
+
+# -- General Configuration -----------------------------------------------------
+
 extensions = [
-    "myst_parser",
-    "sphinx_copybutton",
-
-    "sphinx.ext.autodoc",             
-    "sphinx.ext.autosummary",          
-    "sphinx.ext.napoleon",      
-    "sphinx_sitemap"      
-    # "sphinx.ext.viewcode",            
+    "myst_parser",           # Markdown support
+    "sphinx_copybutton",     # “Copy” button for code blocks
+    "sphinx.ext.autodoc",    # API documentation from docstrings
+    "sphinx.ext.autosummary",# Generate summary tables
+    "sphinx.ext.napoleon",   # Google & NumPy style docstrings
+    "sphinx_sitemap",        # Sitemap generation
+    # "sphinx.ext.viewcode", # Source code links (optional)
 ]
 
-# on_rtd = os.environ.get("READTHEDOCS") == "True"
-
-# if on_rtd:
-#     html_baseurl = "https://rlinf-docs.readthedocs.io/en/latest/"
-# else:
-#     html_baseurl = "http://localhost:8000/"
-
-html_baseurl = "https://rlinf-docs.readthedocs.io/en/latest/"
-
-autosummary_generate = True
-autodoc_default_options = {
-    "members": True,
-    # "undoc-members": True,
-    "inherited-members": True,
-    "show-inheritance": True,
-}
-# suppress_warnings = ["toc.excluded"]
-
+# File types for source documents
 source_suffix = {
     '.rst': 'restructuredtext',
-    '.md': 'markdown',
-}
-templates_path = ['_templates']
-exclude_patterns = []
-
-default_role = 'code'
-
-# Remove the "View page source" link from the sidebar
-html_show_sourcelink = False
-
-# -- Options for HTML output -------------------------------------------------
-html_theme = "pydata_sphinx_theme"
-
-
-import pathlib, re
-def render_svg_logo(path, width="4rem", height="auto"):
-    svg_path = pathlib.Path(__file__).parent / path
-    text = svg_path.read_text(encoding="utf-8")
-    return re.sub(
-        r"<svg\b",
-        f'<svg width="{width}" height="{height}"',
-        text,
-        count=1,
-    )
-
-# Theme options to configure the navbar and sidebar
-html_theme_options = {
-    "logo": {
-        "svg": render_svg_logo("_static/logo.svg")
-    },
-
-    "navbar_start": ["navbar-logo"],
-    "navbar_end": ["theme-switcher", "version-switcher", "navbar-icon-links"],
-    "navbar_align": "left",
-
-    "navbar_center": ["navbar-nav"],
-    "secondary_sidebar_items": ["page-toc"],
-    # "page_sidebar_items": ["sidebar-nav-bs.html"],
-
-    # Version switcher configuration (requires _static/versions.json)
-    "switcher": {
-        "json_url": "_static/versions.json",
-        "version_match": release,
-    },
-    "primary_sidebar_end": [],
-    "collapse_navigation": True,
-    "show_nav_level": 1,
-    "navigation_depth": 1,
-
-    "header_links_before_dropdown": 10,
-    "icon_links": [
-        {
-            "name": "GitHub",
-            "url": "https://cloud.infini-ai.com", # TODO: change to github link
-            "icon": "fab fa-github",
-            "type": "fontawesome",
-        },
-    ],
+    '.md':  'markdown',
 }
 
-# Enhanced AI Chat Configuration
-html_js_files = [
-    'typesense.min.js',  # Local Typesense client library
+templates_path    = ['_templates']
+exclude_patterns  = []
+default_role      = 'code'
+autosummary_generate = True
+
+# Autodoc defaults: include members and inheritance
+autodoc_default_options = {
+    "members":            True,
+    "inherited-members":  True,
+    "show-inheritance":   True,
+}
+
+
+# -- HTML Output Options -------------------------------------------------------
+
+html_theme        = "pydata_sphinx_theme"
+html_show_sourcelink = False  # Hide “View page source” link
+html_baseurl      = "https://rlinf-docs.readthedocs.io/en/latest/"
+html_favicon      = "_static/favicon.ico"
+html_static_path  = ['_static']
+html_css_files    = [
+    "css/custom.css",
+    "css/sphinx-modal.css",
+    "css/mode-selection.css",
+]
+html_js_files     = [
+    'typesense.min.js',
     'js/config-manager.js',
     'js/typesense-client.js',
     'js/message-manager.js',
@@ -113,60 +68,80 @@ html_js_files = [
     'js/mode-panel.js',
     'sphinx-modal-widget.js',
 ]
-
-html_css_files = [
-    "css/custom.css",
-    'css/sphinx-modal.css',
-    'css/mode-selection.css',
-]
-
-
-html_sidebars = {
+html_sidebars     = {
     "**": ["sidebar-nav-bs.html"]
 }
 
-html_favicon = "_static/favicon.ico"
 
-# Paths for custom static files (such as CSS)
-html_static_path = ['_static']
+# -- Theme Options -------------------------------------------------------------
 
-# Function to setup template context with build-time configuration
+def render_svg_logo(path, width="4rem", height="auto"):
+    """Embed and size an SVG logo from the static directory."""
+    svg_file = pathlib.Path(__file__).parent / path
+    svg_text = svg_file.read_text(encoding="utf-8")
+    return re.sub(r"<svg\b",
+                  f'<svg width="{width}" height="{height}"',
+                  svg_text, count=1)
+
+html_theme_options = {
+    "logo": {
+        "svg": render_svg_logo("_static/logo.svg")
+    },
+    "navbar_start":   ["navbar-logo"],
+    "navbar_center":  ["navbar-nav"],
+    "navbar_end":     ["theme-switcher", "version-switcher", "navbar-icon-links"],
+    "navbar_align":   "left",
+    "secondary_sidebar_items": ["page-toc"],
+    "collapse_navigation":     True,
+    "show_nav_level":          1,
+    "navigation_depth":        1,
+    "header_links_before_dropdown": 10,
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url":  "https://cloud.infini-ai.com",  # TODO: update to GitHub
+            "icon": "fab fa-github",
+            "type": "fontawesome",
+        },
+    ],
+    "switcher": {
+        "json_url":      "_static/versions.json",
+        "version_match": release,
+    },
+}
+
+
+# -- HTML Context & Setup ------------------------------------------------------
+
 def setup_html_context(app, pagename, templatename, context, doctree):
-    """Add build-time configuration variables to template context."""
-    
-    # Get configuration values injected via -D flags
-    config = app.config
-    
-    # Template context for Sphinx AI configuration
+    """Inject build-time config values into templates."""
+    cfg = app.config
     context.update({
-        'typesense_host': getattr(config, 'typesense_host', 'localhost'),
-        'typesense_port': getattr(config, 'typesense_port', 8108),
-        'typesense_protocol': getattr(config, 'typesense_protocol', 'http'),
-        'typesense_api_key': getattr(config, 'typesense_api_key', ''),
-        'typesense_collection': getattr(config, 'typesense_collection', 'sphinx_docs'),
-        'sphinx_env': getattr(config, 'sphinx_env', 'development'),
-        'sphinx_debug': getattr(config, 'sphinx_debug', 'false'),
+        'typesense_host':       getattr(cfg, 'typesense_host', 'localhost'),
+        'typesense_port':       getattr(cfg, 'typesense_port', 8108),
+        'typesense_protocol':   getattr(cfg, 'typesense_protocol', 'http'),
+        'typesense_api_key':    getattr(cfg, 'typesense_api_key', ''),
+        'typesense_collection': getattr(cfg, 'typesense_collection', 'sphinx_docs'),
+        'sphinx_env':           getattr(cfg, 'sphinx_env', 'development'),
+        'sphinx_debug':         getattr(cfg, 'sphinx_debug', 'false'),
     })
 
 def setup(app):
-    """Setup function called by Sphinx."""
-    
-    # Register configuration values that can be set via -D flags
-    app.add_config_value('typesense_host', 'typesense.product-team-dev.infini-ai.com', 'html')
-    app.add_config_value('typesense_port', 9443, 'html')
+    """Register custom config values and connect context setup."""
+    # Allow overriding via -D flags
+    app.add_config_value('typesense_host',     'typesense.product-team-dev.infini-ai.com', 'html')
+    app.add_config_value('typesense_port',     9443, 'html')
     app.add_config_value('typesense_protocol', 'https', 'html')
-    app.add_config_value('typesense_api_key', 'hAvqOEYEbtQwuFvm0SeclKHmCX4QXgs3', 'html')
-    app.add_config_value('typesense_collection', 'infini-RL', 'html')
-    app.add_config_value('sphinx_env', 'development', 'html')
-    app.add_config_value('sphinx_debug', 'false', 'html')
-    
-    # Connect the template context function
+    app.add_config_value('typesense_api_key',  'hAvqOEYEbtQwuFvm0SeclKHmCX4QXgs3', 'html')
+    app.add_config_value('typesense_collection','infini-RL', 'html')
+    app.add_config_value('sphinx_env',         'development', 'html')
+    app.add_config_value('sphinx_debug',       'false', 'html')
+
     app.connect('html-page-context', setup_html_context)
-    
     app.add_css_file("css/custom.css")
 
     return {
-        'version': '0.1',
-        'parallel_read_safe': True,
-        'parallel_write_safe': True,
+        'version':              '0.1',
+        'parallel_read_safe':   True,
+        'parallel_write_safe':  True,
     }
