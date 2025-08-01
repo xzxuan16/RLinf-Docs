@@ -19,6 +19,7 @@ release   = 'v1'
 
 extensions = [
     "myst_parser",           # Markdown support
+    'sphinx.ext.mathjax',
     "sphinx_copybutton",     # “Copy” button for code blocks
     "sphinx.ext.autodoc",    # API documentation from docstrings
     "sphinx.ext.autosummary",# Generate summary tables
