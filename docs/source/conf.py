@@ -89,7 +89,7 @@ html_theme_options = {
     },
     "navbar_start":   ["navbar-logo"],
     "navbar_center":  ["navbar-nav"],
-    "navbar_end":     ["theme-switcher", "version-switcher", "navbar-icon-links"],
+    "navbar_end":     ["theme-switcher", "version-switcher", "navbar-icon-links", "askai"],
     "navbar_align":   "left",
     "secondary_sidebar_items": ["page-toc"],
     "collapse_navigation":     True,

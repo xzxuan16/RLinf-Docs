@@ -42,3 +42,8 @@ window.SPHINX_AI_CONFIG = {
 })();
 </script>
 {%- endblock %} 
+
+{%- block navbar_end %}
+  {{ super() }}
+  {%- include "askai.html" -%}
+{%- endblock %}

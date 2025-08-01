@@ -298,46 +298,61 @@
     return modal;
   }
 
-  // creater trigger button
-  function createTrigger() {
-    const trigger = document.createElement('button');
-    trigger.className = 'sphinx-modal-trigger';
-    trigger.innerHTML = 'Ask AI';
-    trigger.style.cssText = `
-      position: fixed;
-      bottom: 100px;
-      right: 100px;
-      background-color: #673ab7;
-      color: white;
-      border: none;
-      border-radius: 50px;
-      padding: 12px 20px;
-      cursor: pointer;
-      font-family: var(--sphinx-font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
-      font-size: 14px;
-      font-weight: 500;
-      box-shadow: 0 4px 15px rgba(31, 13, 45, 0.7);
-      z-index: 1000;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    `;
+  function bindNavTrigger() {
+    // 模板里按钮的 ID
+    const trigger = document.getElementById('ask-ai-trigger');
+    if (!trigger) return;
     
-    // Hover effects
-    trigger.addEventListener('mouseenter', () => {
-      trigger.style.transform = 'translateY(-2px)';
-      trigger.style.boxShadow = '0 6px 20px rgba(50, 0, 65, 0.4)';
+    trigger.addEventListener('click', () => {
+      const overlay = document.querySelector('.sphinx-modal-overlay');
+      const modal   = document.querySelector('.sphinx-modal');
+      overlay.classList.add('show');
+      modal.classList.add('show');
+      // 聚焦输入框
+      setTimeout(() => modal.querySelector('textarea')?.focus(), 100);
     });
-    
-    trigger.addEventListener('mouseleave', () => {
-      trigger.style.transform = 'translateY(0)';
-      trigger.style.boxShadow = '0 4px 15px rgba(77, 0, 61, 0.3)';
-    });
-    
-    document.body.appendChild(trigger);
-    return trigger;
   }
+
+  // // creater trigger button
+  // function createTrigger() {
+  //   const trigger = document.createElement('button');
+  //   trigger.className = 'sphinx-modal-trigger';
+  //   trigger.innerHTML = 'Ask AI';
+  //   trigger.style.cssText = `
+  //     position: fixed;
+  //     bottom: 100px;
+  //     right: 100px;
+  //     background-color: #673ab7;
+  //     color: white;
+  //     border: none;
+  //     border-radius: 50px;
+  //     padding: 12px 20px;
+  //     cursor: pointer;
+  //     font-family: var(--sphinx-font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  //     font-size: 14px;
+  //     font-weight: 500;
+  //     box-shadow: 0 4px 15px rgba(31, 13, 45, 0.7);
+  //     z-index: 1000;
+  //     transition: all 0.2s ease;
+  //     display: flex;
+  //     align-items: center;
+  //     gap: 8px;
+  //   `;
+    
+  //   // Hover effects
+  //   trigger.addEventListener('mouseenter', () => {
+  //     trigger.style.transform = 'translateY(-2px)';
+  //     trigger.style.boxShadow = '0 6px 20px rgba(50, 0, 65, 0.4)';
+  //   });
+    
+  //   trigger.addEventListener('mouseleave', () => {
+  //     trigger.style.transform = 'translateY(0)';
+  //     trigger.style.boxShadow = '0 4px 15px rgba(77, 0, 61, 0.3)';
+  //   });
+    
+  //   document.body.appendChild(trigger);
+  //   return trigger;
+  // }
 
   // Enhanced chat functionality
   function initChat(modal) {
@@ -753,49 +768,31 @@
     injectModalStyles();
     
     // Create UI components
-    const trigger = createTrigger();
+    // const trigger = createTrigger();
     const modal = createModal();
+
+    bindNavTrigger();
     
     // Initialize chat functionality
     initChat(modal);
     
-    // Event listeners
+    // 3) 关闭逻辑
     const overlay = modal.querySelector('.sphinx-modal-overlay');
     const modalBox = modal.querySelector('.sphinx-modal');
     const closeBtn = modal.querySelector('.sphinx-modal-close');
-    
-    trigger.addEventListener('click', () => {
-      overlay.classList.add('show');
-      modalBox.classList.add('show');
-      
-      // Focus textarea
-      const textarea = modal.querySelector('textarea');
-      if (textarea) {
-        setTimeout(() => textarea.focus(), 100);
-      }
-    });
-    
-    // Function to handle modal close
-    const handleModalClose = () => {
+
+    function handleModalClose() {
       overlay.classList.remove('show');
       modalBox.classList.remove('show');
-      
-      // Clear chat history when modal is closed
       const messagesContainer = modal.querySelector('.sphinx-chat-messages');
       clearChatHistory(messagesContainer);
-    };
-    
+    }
+
     closeBtn.addEventListener('click', handleModalClose);
-    
     overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) {
-        handleModalClose();
-      }
+      if (e.target === overlay) handleModalClose();
     });
-    
-    // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
-      // Close modal with Escape
       if (e.key === 'Escape' && overlay.classList.contains('show')) {
         handleModalClose();
       }
