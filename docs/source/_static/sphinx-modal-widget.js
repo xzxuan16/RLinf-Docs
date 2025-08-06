@@ -459,7 +459,7 @@
       <h3>👋 Hello! I'm your AI Documentation Assistant</h3>
       <p>I can help you understand the content of this document and answer your questions.</p>
       <div class="sphinx-suggested-prompts">
-        <div class="sphinx-suggested-prompt" data-prompt="What is RLInf about?">What is RLInf about?</div>
+        <div class="sphinx-suggested-prompt" data-prompt="What is RLinf about?">What is RLinf about?</div>
         <div class="sphinx-suggested-prompt" data-prompt="How do I get started quickly?">How do I get started quickly?</div>
         <div class="sphinx-suggested-prompt" data-prompt="Where can I find examples?">Where can I find examples?</div>
         <div class="sphinx-suggested-prompt" data-prompt="Are there any important notes?">Are there any important notes?</div>

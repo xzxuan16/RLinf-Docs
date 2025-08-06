@@ -16,6 +16,11 @@ a.reference.internal {
   text-decoration: none !important;
 }
 
+img.logo-img {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 /* if you want also to remove underline on hover
 a.reference:hover,
 a.reference.external:hover,

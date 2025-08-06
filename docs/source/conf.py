@@ -1,7 +1,7 @@
 import os
-import sys
 import pathlib
 import re
+import sys
 
 # Ensure project root is on Python path for autodoc
 sys.path.insert(0, os.path.abspath("../../"))
@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.abspath("../../"))
 
 # -- Project Information -------------------------------------------------------
 
-project   = 'RLInf'
+project   = 'RLinf'
 author    = 'xzxuan'
 copyright = '2025, xzxuan'
 release   = 'v1'
@@ -51,8 +51,8 @@ autodoc_default_options = {
 
 html_theme        = "pydata_sphinx_theme"
 html_show_sourcelink = False  # Hide “View page source” link
-html_baseurl      = "https://rlinf-docs.readthedocs.io/en/latest/"
-html_favicon      = "_static/favicon.ico"
+html_baseurl      = "https://RLinf-docs.readthedocs.io/en/latest/"
+html_favicon      = "_static/favi.ico"
 html_static_path  = ['_static']
 html_css_files    = [
     "css/custom.css",

@@ -1,10 +1,10 @@
-Distributed Training Cluster Launch
+Multi-Node Distributed Training
 ====================================
 
 This document describes how to launch a multi-node Ray cluster for distributed training using the provided bash scripts.
 
-Overview
---------
+Distributed Training Cluster Launch
+---------------------------------------
 
 The cluster launch involves two helper scripts:
 
@@ -23,7 +23,7 @@ All nodes must run ``start_ray.sh``, while only the head node runs ``check_ray.s
 ..   - ``RANK>0`` for worker nodes  
 
 Cluster Startup
----------------
+~~~~~~~~~~~~~~~~~~~
 
 1. **Start Ray on all nodes**  
    On **every** node (head and workers), run:
@@ -42,7 +42,7 @@ Cluster Startup
    This will block until the cluster’s reported GPU count matches ``<total_gpu_count>``.
 
 Launching Training
-------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once the Ray cluster is up and ready, launch your training script:
 
@@ -51,3 +51,9 @@ Once the Ray cluster is up and ready, launch your training script:
    bash xxxx # TODO:
 
 **Note**: Only a **single** invocation of ``xx.sh #TODO:`` is required (typically on the head node). Ray will distribute the workload automatically across all nodes in the cluster.
+
+
+Multinode Trainning Example
+------------------------------
+
+TODO:

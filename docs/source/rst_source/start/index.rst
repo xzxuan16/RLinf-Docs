@@ -1,21 +1,21 @@
-.. title:: Quickstart — RLInf
+.. title:: Quickstart — RLinf
 
 Quickstart
 ==========
 
-This section walks you through spinning up **RLInf** for the first time.
+Welcome to the RLinf Quickstart Guide. This section will walk you through launching **RLinf** for the first time. 
+We present two concise examples to demonstrate the framework's workflow and help you get started quickly.
 
-RLInf is an **open-source RL framework for large language models(LLMs) post-training**.  
-It unifies scalable distributed training, modern RL algorithms (GRPO, PPO, etc.), and a plug-and-play interface for reward models, datasets, and policy back-ends.
+Available examples:
 
-**What you will learn here**
+- Mathematical training on the XXX dataset using the XXX algorithm (see :doc:`math`)
 
-* :doc:`Installation <installation>` – two supported ways to create an environment (Docker **or** Conda + Pip).
-* :doc:`Start<./start>` – launch your first training job and understand the key hyper-parameters of the provided `bash` launcher.
+- Embodied training on the XXX task using the XXX algorithm (see :doc:`embody`)
 
 .. toctree::
    :hidden:
    :maxdepth: 2
 
-   installation
-   start
+   math
+   embody
+   example
