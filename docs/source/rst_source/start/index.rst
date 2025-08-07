@@ -3,7 +3,7 @@
 Quickstart
 ==========
 
-Welcome to the RLinf Quickstart Guide. This section will walk you through launching **RLinf** for the first time. 
+Welcome to the RLinf Quickstart Guide. This section will walk you through launching RLinf for the first time. 
 We present two concise examples to demonstrate the framework's workflow and help you get started quickly.
 
 Available examples:
@@ -18,4 +18,4 @@ Available examples:
 
    math
    embody
-   example
+   temp

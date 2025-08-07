@@ -15,9 +15,9 @@ RLinf supports:
 
 - **Embodied Intelligence**
   
-  - Native adapters for VLA models: `OpenVLA`_, `OpenVLA-OFT`_, :math:`\href{https://github.com/Physical-Intelligence/openpi}{\pi_0}`
+  - Native adapters for VLA models: `OpenVLA`_, `OpenVLA-OFT`_, `π₀`_
   - Plug-and-play connectors for simulators: `IsaacLab`_, `ManiSkill3`_, `LIBERO`_
-  - First RL fine-tuning of the :math:`\pi_0` model family
+  - First RL fine-tuning of the π₀ model family
 
 - **Hybrid Execution Modes**
   
@@ -47,7 +47,7 @@ Our goal is to unleash boundless computing resources, integrate mainstream devel
 .. _IsaacLab: https://github.com/isaac-sim/IsaacLab
 .. _ManiSkill3: https://github.com/haosulab/ManiSkill
 .. _LIBERO: https://github.com/Lifelong-Robot-Learning/LIBERO
-.. _pi_0: https://github.com/Physical-Intelligence/openpi
+.. _π₀: https://github.com/Physical-Intelligence/openpi
 .. _Megatron-LM: https://github.com/NVIDIA/Megatron-LM
 .. _SGLang: https://github.com/sgl-project/sglang
 
@@ -60,7 +60,7 @@ Our goal is to unleash boundless computing resources, integrate mainstream devel
   rst_source/start/index
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 3
   :hidden:
   :caption: Tutorials
 
@@ -72,6 +72,13 @@ Our goal is to unleash boundless computing resources, integrate mainstream devel
   :caption: Example Gallery
 
   rst_source/examples/index
+  
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Miscellaneous
+
+  rst_source/misc/index
 
 .. toctree::
   :maxdepth: 2
@@ -79,13 +86,6 @@ Our goal is to unleash boundless computing resources, integrate mainstream devel
   :caption: API Reference
 
   rst_source/apis/index
-
-.. toctree::
-  :maxdepth: 2
-  :hidden:
-  :caption: Miscellaneous
-
-  rst_source/misc/index
 
 .. toctree::
   :maxdepth: 1

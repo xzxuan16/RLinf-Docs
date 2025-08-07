@@ -52,7 +52,7 @@ autodoc_default_options = {
 html_theme        = "pydata_sphinx_theme"
 html_show_sourcelink = False  # Hide “View page source” link
 html_baseurl      = "https://RLinf-docs.readthedocs.io/en/latest/"
-html_favicon      = "_static/favi.ico"
+html_favicon      = "_static/favicon.ico"
 html_static_path  = ['_static']
 html_css_files    = [
     "css/custom.css",
@@ -94,8 +94,8 @@ html_theme_options = {
     "navbar_align":   "left",
     "secondary_sidebar_items": ["page-toc"],
     "collapse_navigation":     True,
-    "show_nav_level":          1,
-    "navigation_depth":        1,
+    "show_nav_level":          2,
+    "navigation_depth":        4,
     "header_links_before_dropdown": 10,
     "icon_links": [
         {

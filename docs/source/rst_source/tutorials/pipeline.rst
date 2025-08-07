@@ -1,4 +1,0 @@
-Pipeline Example
-===================
-
-TODO:
