@@ -1,1 +1,13 @@
-build/
+docs/build/
+__pycache__/
+.vscode
+*.log
+*.idx
+*.npy
+*.DS_Store
+*.out
+build
+dist
+logs/*
+*.so
+*.pyc
