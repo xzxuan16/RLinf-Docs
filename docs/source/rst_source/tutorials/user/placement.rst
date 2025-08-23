@@ -95,9 +95,6 @@ Useful to colocation placement of rollout and training models that places model 
 Example
 ---------
 
-.. autoclass:: rlinf.scheduler.placement.PlacementStrategy
-   :no-members:
-   :no-inherited-members:
 
 Summary
 --------

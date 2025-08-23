@@ -3,15 +3,9 @@ Test
 
 
 
-Module
--------
-
-.. automodule:: TestAPI.train.data.MegatronCoreExample
+.. autoclass:: TestAPI.train.data.MegatronCoreExample
     :members: 
 
 
-Func
------
-
-.. automodule:: TestAPI.generation.task.SimpleLinearModel
+.. autoclass:: TestAPI.generation.task.SimpleLinearModel
     :members: 
