@@ -39,6 +39,7 @@ templates_path    = ['_templates']
 exclude_patterns  = []
 default_role      = 'code'
 autosummary_generate = True
+autodoc_mock_imports = ["megatron"]
 
 # Autodoc defaults: include members and inheritance
 # autodoc_default_options = {

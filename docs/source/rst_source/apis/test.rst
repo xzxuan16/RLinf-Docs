@@ -6,11 +6,12 @@ Test
 Module
 -------
 
-.. automodule:: rlinf.utils.distributed
-    :members: broadcast_tensor
+.. automodule:: TestAPI.train.data.MegatronCoreExample
+    :members: 
 
 
 Func
 -----
 
-.. autofunction:: rlinf.utils.distributed.broadcast_tensor
+.. automodule:: TestAPI.generation.task.SimpleLinearModel
+    :members: 

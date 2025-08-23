@@ -1,52 +1,70 @@
-'''
-Module data_processor
 
-This module provides the DataProcessor class for handling data preprocessing tasks.
-'''
 
-class DataProcessor:
+import torch
+from megatron.core import tensor_parallel
+from omegaconf import DictConfig
+
+
+class MegatronCoreExample:
     """
-    DataProcessor handles preprocessing of raw data into a format suitable for analysis or modeling.
+    A minimal example using `megatron.core` and `omegaconf.DictConfig`.
 
-    Attributes:
-        input_data (Any): The raw data provided for preprocessing.
-        processed_data (Any): The result after preprocessing steps have been applied.
+    This class demonstrates how to:
+      1. Accept a configuration object defined with OmegaConf.
+      2. Use a small function from `megatron.core` (e.g., tensor parallel utilities).
+         Here we simply use `tensor_parallel.copy_to_tensor_model_parallel_region`
+         as a demonstration.
+
+    Parameters
+    ----------
+    cfg : omegaconf.DictConfig
+        A configuration object containing model parameters or runtime options.
+
+    Attributes
+    ----------
+    cfg : omegaconf.DictConfig
+        The provided configuration.
+    tensor : torch.Tensor
+        A dummy tensor to demonstrate Megatron tensor-parallel operations.
+
+    Methods
+    -------
+    run_parallel_copy()
+        Applies a tensor-parallel operation to the dummy tensor.
+    show_config()
+        Prints the configuration contents in a readable format.
+
+    Examples
+    --------
+    >>> from omegaconf import DictConfig
+    >>> config = DictConfig({"hidden_size": 16, "num_layers": 2})
+    >>> example = MegatronCoreExample(config)
+    >>> example.show_config()
+    hidden_size: 16
+    num_layers: 2
+    >>> output = example.run_parallel_copy()
+    >>> print(output.shape)
+    torch.Size([2, 2])
     """
 
-    def __init__(self, input_data):
-        """
-        Initialize a DataProcessor instance.
+    def __init__(self, cfg: DictConfig):
+        self.cfg = cfg
+        # A dummy tensor for demonstration purposes
+        self.tensor = torch.ones((2, 2))
 
-        Args:
-            input_data (Any): The raw input data to be preprocessed.
+    def run_parallel_copy(self) -> torch.Tensor:
         """
-        self.input_data = input_data
-        self.processed_data = None
+        Run a simple Megatron tensor-parallel operation.
 
-    def normalize(self):
+        Returns
+        -------
+        torch.Tensor
+            A tensor after applying a tensor-parallel copy operation.
         """
-        Normalize the input data to a standard scale.
+        return tensor_parallel.copy_to_tensor_model_parallel_region(self.tensor)
 
-        Returns:
-            Any: The normalized data.
+    def show_config(self):
         """
-        # Placeholder implementation
-        self.processed_data = self.input_data  # No-op normalization
-        return self.processed_data
-
-    def clear_missing(self):
+        Print the configuration values stored in the DictConfig.
         """
-        Remove or impute missing values in the input data.
-
-        Returns:
-            Any: Data with missing values handled.
-        """
-
-    def print_xyz(self):
-        """
-        Print 'xyz'
-
-        Returns:
-            None
-        """
-        print('xyz')
+        print(self.cfg)
