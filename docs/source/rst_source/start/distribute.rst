@@ -5,16 +5,18 @@ This guide shows how to launch a **4-node Ray cluster** (each node
 has **8 GPUs**) and run distributed RL training on
 the *math* task with the
 `DeepSeek-R1-Distill-Qwen-1.5B <https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B>`_
-model.  The same procedure scales to any number of nodes / GPUs once
-you adjust the YAML config correspondingly.
+model.  
+The same procedure scales to any number of nodes/GPUs, as long as you customize the YAML configuration according to your needs.
 
 
 Prerequisites
 -------------
 
-* Clone RLinf to a shared filesystem (e.g., NFS) that each node can read from.
-* CUDA and driver versions identical across the cluster.
-* ``ray`` installed on **every** node (``pip install ray[default]``).
+Before running, make sure to check the following:
+
+* Clone RLinf to a shared filesystem accessible by all nodes.
+* Ensure that each node has started the corresponding container image.
+
 
 
 Step 1: Start a Ray Cluster

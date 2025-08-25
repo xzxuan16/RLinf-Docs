@@ -1,8 +1,9 @@
 Online Scaling Mechanism
 ========================
 
+
 Online scaling (also known as elastic training)  
-is a powerful feature that enables dynamic scaling of training resources during RL training **within seconds**.  
+is a powerful feature that enables dynamic scaling of training resources, with GPU swithching performed within 1 seconds.
 This capability allows you to adjust the number of GPUs and nodes used for training in real time,  
 based on cluster availability, workload demands, or resource optimization goals.
 

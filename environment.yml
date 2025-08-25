@@ -1,9 +1,0 @@
-name: docs
-channels: [conda-forge, defaults]
-dependencies:
-  - python=3.11.10
-  - pip
-  - pip:
-      - hydra-core==1.4.0.dev1
-      - torch==2.5.1
-      - -r docs/requirements.txt

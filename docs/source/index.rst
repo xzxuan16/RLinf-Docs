@@ -25,14 +25,14 @@ RLinf is a flexible and scalable open-source infrastructure designed for post-tr
 **RLinf is unique with:**
 
 - Embodied Agent Support
-- Native adapters for VLA models: `OpenVLA`_, `OpenVLA-OFT`_, `π₀`_
-- Plug-and-play connectors for CPU- and GPU-based simulators: `ManiSkill3`_, `LIBERO`_
+- Fast adaptation support for mainstream VLA models: `OpenVLA`_, `OpenVLA-OFT`_, `π₀`_
+- Support for mainstream CPU & GPU-based simulators via standardized RL interfaces: `ManiSkill3`_, `LIBERO`_
 - Enabling the first RL fine-tuning of the π₀ model family with a flow-matching action expert.
 
 **RLinf is fast with:**
 
-- automatic online-scaling mechanism: GPU switching within 1 second.
-- Auto-scheduling policy: automatically selects the most suitable execution mode based on the training workload.
+- Online Scaling Strategy: dynamically scales training resources, with GPU switching performed within seconds.
+- Auto-scheduling Strategy: automatically selects the most suitable execution mode based on the training workload.
 - Improves efficiency by 20-40% while preserving the on-policy property of RL algorithms.
 
 **RLinf is flexible and easy to use with:**
@@ -51,7 +51,6 @@ RLinf is a flexible and scalable open-source infrastructure designed for post-tr
 
 - Built-in support for popular RL methods, including PPO, GRPO, DAPO, Reinforce++, and more.
 
-- Support for SFT.
 
 
 .. _OpenVLA: https://github.com/openvla/openvla
@@ -122,7 +121,7 @@ RLinf is a flexible and scalable open-source infrastructure designed for post-tr
 --------------------------------------------
 
 
-Contribution guidelines
+Contribution Guidelines
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Great! We are always on the lookout for more contributors to our code base.
